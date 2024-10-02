@@ -1,0 +1,8 @@
+.paymentInput {
+  width: 100%;
+  border: 2px solid rgb(9, 73, 132);
+  padding: 1% 3%;
+}
+.paymentInput:focus-within {
+  border-left: 4px solid #2868bc;
+}

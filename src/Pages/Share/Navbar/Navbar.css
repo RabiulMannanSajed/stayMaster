@@ -1,0 +1,14 @@
+.profileModal {
+  width: 200px;
+  text-align: center;
+  position: absolute;
+  z-index: 1;
+  margin-top: 4%;
+  margin-left: 85%;
+  border-radius: 5px;
+  padding: 10px;
+}
+.profileIcon {
+  color: skyblue;
+  font-size: 25px;
+}
