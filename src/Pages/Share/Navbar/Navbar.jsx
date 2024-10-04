@@ -1,12 +1,14 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../Provider/AuthProvider";
 import { FaRegUserCircle, FaUserCircle } from "react-icons/fa";
 import { IoSettingsSharp } from "react-icons/io5";
 import { FiLogOut } from "react-icons/fi";
 import "./Navbar.css";
+import Swal from "sweetalert2";
 const Navbar = () => {
-  const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const { user, logOut } = useContext(AuthContext);
   const modalRef = useRef(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const openModal = () => {
@@ -14,6 +16,12 @@ const Navbar = () => {
   };
   const closeModal = () => {
     setIsModalOpen(false);
+  };
+  const handleLogOut = () => {
+    logOut().then(() => {
+      navigate("/");
+      Swal.fire("SuccessfUlly logout");
+    });
   };
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -36,9 +44,15 @@ const Navbar = () => {
   }, [isModalOpen]);
   return (
     <div className="bg-gray-500 flex justify-between p-5">
-      <p className="font-bold text-3xl flex-1">
-        Stay <span className="text-[#2FC1FF]">Master</span>{" "}
-      </p>
+      <div className="flex-1">
+        <NavLink to={"/"}>
+          {" "}
+          <p className="font-bold text-3xl flex-1">
+            Stay <span className="text-[#2FC1FF]">Master</span>{" "}
+          </p>
+        </NavLink>
+      </div>
+
       <div className="flex-1 text-white">
         <div className="flex justify-between text-xl font-bold">
           <div className="cursor-pointer">
@@ -80,8 +94,8 @@ const Navbar = () => {
             <div className="flex items-center mt-4 mb-4   text-xl">
               <FiLogOut className=" mr-2 " />
               <li onClick={closeModal}>
-                {/* <button onClick={handleLogOut}>Logout </button> */}
-                <button>Logout </button>
+                <button onClick={handleLogOut}>Logout </button>
+                {/* <button>Logout </button> */}
               </li>
             </div>
           </div>

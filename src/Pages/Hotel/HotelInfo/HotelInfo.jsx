@@ -75,6 +75,7 @@ const HotelInfo = () => {
       )}
       {/* //TODO : id user here then go to the payment or login */}
       {/* //TODO : this is ternary opa */}
+      {/*  condition ? true : */}
       {user ? (
         <>
           <NavLink to={`/paymentSystem/${hotelInfos?.id}`}>

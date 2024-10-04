@@ -1,5 +1,4 @@
 import React, { useContext, useState } from "react";
-import { useForm } from "react-hook-form";
 import { NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../Provider/AuthProvider";
 
@@ -17,8 +16,8 @@ const Login = () => {
       .then((result) => {
         const user = result.user;
         console.log(user);
-        Swal.fire("Successfully Login");
         navigate("/");
+        Swal.fire("Successfully Login");
       })
       .catch((error) => {
         const errorMessage = error.errorMessage;
